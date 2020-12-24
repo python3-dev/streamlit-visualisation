@@ -8,12 +8,16 @@ import seaborn as sns
 
 #Remove Warnings
 st.balloons()
-st.set_option('deprecation.showPyplotGlobalUse', False)
+#st.set_option('deprecation.showPyplotGlobalUse', False)
 st.title("Tips_Dataset")
 
 
 #import dataset
 df = sns.load_dataset('tips')
+
+for column in df.select_dtypes('category').columns:
+    df[column] = df[column].astype('str')
+
 #First thirty rows
 tips = df.head(30)
 #Display the table
